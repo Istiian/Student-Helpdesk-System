@@ -1,0 +1,159 @@
+:root{
+    --heading: "Poppins";
+    --body: "Roboto";
+    --accent: #EFA73F;
+    --secondary: #012362;
+    --primary: #fcfcfc;
+    --text: #0c0c0c;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--body);
+    color: var(--text);
+
+}
+body{
+    background-color: var(--primary);
+}
+.nav{
+    width: 100%;
+    height: 50px;
+    background-color: var(--secondary); 
+    display: flex;
+    justify-content: space-between;
+}
+.nav img{
+    height: 40px;
+    width: 132px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.dropdown {
+    margin: 0;
+    padding: 0px;
+    background-color: var(--accent);
+    margin-top: 10px;
+    height: 30px; 
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--text);
+    transition: 0.3s ease;
+}
+.dropdown:hover{
+    scale: 95%;
+}
+
+.btn {
+    height: 100%;
+    line-height: 30px;
+    text-align: center; 
+    padding: 0 10px; 
+}
+h1 a{
+    font-size: 20px;
+    display: block;
+    font-family: var(--heading);
+    max-width: 1000px;
+    width: 95%;
+    margin-inline: auto;
+    text-decoration: none;
+    color: var(--accent);
+    margin-top: 100px;
+    margin-bottom: 25px;
+}
+.InfoContainer{
+    width: 90%;
+    max-width: 950px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+#EditBtn,#DeleteBtn{
+    width: 100px;
+    margin-inline: auto;
+    display: inline-block;
+    font-size: 12px;
+    height: 25px;
+    border: 1px solid var(--text);
+    color: var(--primary);
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+#EditBtn i,#DeleteBtn i{
+    font-size: 12px;
+    color: var(--primary);
+}
+#DeleteBtn{
+    background-color: #8B0000 ;
+}
+#EditBtn{
+    background-color: #186218 ;
+}
+
+.TicketContentContainer{
+    width: 90%;
+    max-width: 950px;
+    border-bottom: 1px solid #ccc;
+}
+.TicketContentContainer h3{
+    font-family: var(--heading);
+}
+.TicketContentContainer p{
+    font-family: var(--body);
+    margin-bottom: 5px;
+}
+.ReplyContainer{
+    width: 90%;
+    max-width: 950px;
+    border-bottom: 1px solid #ccc;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.ReplyContainer p{
+    margin: 0;
+    margin-bottom: 5px;
+}
+.UserInfo h6{
+    margin: 0;
+    font-family: var(--heading);
+    font-size: 20px;
+}
+.UserInfo{
+    margin-bottom: 10px;
+}
+.UserInfo p{
+    margin: 0;
+    color: #838383;
+    font-size: 10px;
+}
+.ReplyInput{
+    width: 90%;
+    max-width: 950px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+.ReplyInput form textarea{
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    font-family: var(--body);
+}
+.ReplyInput form button{
+    width: 100px;
+    height: 40px;
+    background-color: var(--accent);
+    color: var(--text);
+    border: 1px solid var(--text);
+    border-radius: 5px;
+    float: right;
+    margin-top: 5px;
+    transition: 0.3s ease;
+}
+button:hover{
+    scale: 95%;
+}

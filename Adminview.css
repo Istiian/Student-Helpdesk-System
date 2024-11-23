@@ -1,0 +1,220 @@
+:root{
+    --heading: "Poppins";
+    --body: "Roboto";
+    --accent: #EFA73F;
+    --secondary: #012362;
+    --primary: #fcfcfc;
+    --text: #0c0c0c;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--body);
+    color: var(--text);
+
+}
+body,html{
+    background-color: var(--primary);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    height: auto;
+}
+main{
+    width: 100%;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+}
+
+
+.sideNav{
+    width: 20%;
+    height: auto;
+    min-height: 100vh;
+    background-color: var(--secondary);
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease-out;
+    
+}
+.contentContainer{
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    
+}
+.sideNav.Clicked{
+    left:-20%;
+    position: relative;
+    display: none;
+}
+.contentContainer.Clicked{
+    width: 100%;
+}
+#CMUHEADER{
+    max-width: 170px;
+    width: 90%;
+    margin-inline:auto;
+    margin-top: 5px;
+    height: 40px;
+}
+.nav{
+    width: 100%;
+    height: 50px;
+    box-shadow: 2px 2px 13px 1px rgba(0,0,0,0.28); 
+    display: flex;
+    justify-content: space-between;
+}
+.fa-bars{
+    color: var(--secondary);
+    font-size: 30px;
+    line-height: 50px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+.sideButton{
+    width: 100%;
+    color: var(--primary);
+    font-size: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+}
+
+ul{
+    list-style: none;
+    position: relative;
+    top: 40px;
+    padding: 0;
+}
+ul li:hover{
+    background-color: rgba(252,252,252,0.28);
+}
+.fa-chart-line,.fa-rectangle-list,.fa-user{
+    color: var(--primary);
+    font-size: 15px;
+    margin-right: 20px;
+}
+.dropdown {
+    margin: 0;
+    padding: 0px;
+    background-color: var(--accent);
+    margin-top: 10px;
+    height: 30px; 
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--text);
+}
+
+.btn {
+    height: 100%;
+    line-height: 30px;
+    text-align: center; 
+    padding: 0 10px; 
+    
+}
+h1 a{
+    font-size: 20px;
+    display: block;
+    font-family: var(--heading);
+    max-width: 1000px;
+    width: 95%;
+    margin-inline: auto;
+    text-decoration: none;
+    color: var(--accent);
+    margin-top: 100px;
+    margin-bottom: 25px;
+}
+.InfoContainer{
+    width: 90%;
+    max-width: 950px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+#EditBtn,#DeleteBtn{
+    width: 100px;
+    margin-inline: auto;
+    display: inline-block;
+    font-size: 12px;
+    height: 25px;
+    border: 1px solid var(--text);
+    color: var(--primary);
+    border-radius: 5px;
+}
+#EditBtn i,#DeleteBtn i{
+    font-size: 12px;
+    color: var(--primary);
+}
+#DeleteBtn{
+    background-color: #8B0000 ;
+}
+#EditBtn{
+    background-color: #186218 ;
+}
+
+.TicketContentContainer{
+    width: 90%;
+    max-width: 950px;
+    border-bottom: 1px solid #ccc;
+}
+.TicketContentContainer h3{
+    font-family: var(--heading);
+}
+.TicketContentContainer p{
+    font-family: var(--body);
+    margin-bottom: 5px;
+}
+.ReplyContainer{
+    width: 90%;
+    max-width: 950px;
+    border-bottom: 1px solid #ccc;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.ReplyContainer p{
+    margin: 0;
+    margin-bottom: 5px;
+}
+.UserInfo h6{
+    margin: 0;
+    font-family: var(--heading);
+    font-size: 20px;
+}
+.UserInfo{
+    margin-bottom: 10px;
+}
+.UserInfo p{
+    margin: 0;
+    color: #838383;
+    font-size: 10px;
+}
+.ReplyInput{
+    width: 90%;
+    max-width: 950px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+}
+.ReplyInput form textarea{
+    width: 100%;
+    height: 150px;
+    padding: 5px;
+    font-family: var(--body);
+}
+.ReplyInput form button{
+    width: 100px;
+    height: 40px;
+    background-color: var(--accent);
+    color: var(--text);
+    border: 1px solid var(--text);
+    border-radius: 5px;
+    float: right;
+    margin-top: 5px;
+}

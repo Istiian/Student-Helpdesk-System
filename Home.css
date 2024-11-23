@@ -1,0 +1,216 @@
+:root{
+    --heading: "Poppins";
+    --body: "Roboto";
+    --accent: #EFA73F;
+    --secondary: #012362;
+    --primary: #fcfcfc;
+    --text: #0c0c0c;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--body);
+    color: var(--text);
+
+}
+body{
+    background-color: var(--primary);
+}
+.nav{
+    width: 100%;
+    height: 50px;
+    background-color: var(--secondary); 
+    display: flex;
+    justify-content: space-between;
+}
+.nav img{
+    height: 40px;
+    width: 132px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+.dropdown {
+    margin: 0;
+    padding: 0px;
+    background-color: var(--accent);
+    margin-top: 10px;
+    height: 30px; 
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--text);
+    transition: 0.3s ease;
+}
+.dropdown:hover{
+    scale: 95%;
+}
+
+.btn {
+    height: 100%;
+    line-height: 30px;
+    text-align: center; 
+    padding: 0 10px; 
+    transition: 0.3s ease;
+}
+
+.mainContainer{
+    width: 80%;
+    max-width: 1000px;
+    height: 500px;
+    position: relative;
+    top: 100px;
+}
+#PageHeading{
+    font-family: var(--heading);
+    text-align: center;
+    font-size: 50px;
+}
+.btnContainer{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+#createButton{
+    width: 150px;
+    height: 40px;
+    background-color: #EFA73F;
+    outline: 0;
+    color: var(--text);
+    border-radius: 5px;
+    border: 1px solid var(--text);
+    transition: 0.3s ease;
+}
+select{
+    width: 150px;
+    height: 30px;
+}
+.ticketContainer{
+    width: 100%;
+    position: relative;
+    top: 20px;
+}
+.row{
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+span{
+    display: none;
+    color: #646464;
+    font-family: var(--heading);
+}
+.Subject{
+    color: var(--accent);
+    cursor: pointer;
+}
+.Subject:hover{
+    padding-left: 10px;
+}
+.TicketHeading{
+    color: #646464;
+    font-family: var(--heading);
+}
+#EditBtn,#DeleteBtn, #RateBtn{
+    width: 65px;
+    font-family: var(--body);
+    font-size: 12px;
+    height: 30px;
+    margin-inline: auto;
+    display: inline-block;
+    border: 1px solid var(--text);
+    color: var(--primary);
+    border-radius: 5px;
+    transition: 0.3s ease;
+    
+}
+#EditBtn i,#DeleteBtn i{
+    font-size: 12px;
+    color: var(--primary);
+}
+#DeleteBtn{
+    background-color: #8B0000 ;
+}
+#EditBtn{
+    background-color: #186218 ;
+}
+
+button:hover{
+    scale: 95%;
+}
+button:disabled:hover{
+    scale: 100%;
+}
+button:disabled{
+    cursor: not-allowed;
+}
+
+#RateBtn{
+    
+}
+.card {
+    max-width: 300px;
+    width: 90%;
+    margin-inline: center;
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 99;
+}
+
+
+.StarContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.star {
+    font-size: 30px;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+
+  .one {
+    color: var(--accent);
+  }
+   
+  .two {
+    color: var(--accent)
+  }
+   
+  .three {
+    color: var(--accent)
+  }
+   
+  .four {
+    color: var(--accent)
+  }
+   
+  .five {
+    color: var(--accent)
+  }
+@media screen and (max-width: 767px) {
+    span{
+        display: inline;
+    }
+    .row:first-child{
+        display: none;
+
+    }
+}
+@media screen and (max-width: 1185px) {
+    #DeleteBtn,#EditBtn{
+        margin-top: 5px;
+    }
+}
