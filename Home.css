@@ -71,8 +71,8 @@ body{
     width: 100%;
     height: 30px;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
+    justify-content: right;
+    margin-bottom: 20px;
 }
 #createButton{
     width: 150px;
@@ -104,11 +104,14 @@ span{
     font-family: var(--heading);
 }
 .Subject{
-    color: var(--accent);
+    color: var(--secondary);
     cursor: pointer;
+    font-weight: bold;
+    text-overflow: ellipsis;
 }
 .Subject:hover{
     padding-left: 10px;
+    
 }
 .TicketHeading{
     color: #646464;

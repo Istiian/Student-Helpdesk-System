@@ -4,7 +4,7 @@
 include "connection.php";
 $GetTicket = "SELECT * FROM ticket";
 $NumOfPending = 0;
-$NumOfResolved = 0;
+$NumOfClosed = 0;
 $NumOfOpen = 0; 
 
 $result = $conn->query($GetTicket);
@@ -14,8 +14,8 @@ if($result->num_rows>0){
             case "Pending":
                 ++$NumOfPending;
                 break;
-            case "Resolved":
-                ++$NumOfResolved;
+            case "Closed":
+                ++$NumOfClosed;
                 break;
             case "Open":
                 ++$NumOfOpen;
@@ -83,7 +83,7 @@ if($result->num_rows>0){
 
             <div class="box">
                 <p>Close Ticket</p>
-                <p><?php echo $NumOfResolved?></p>
+                <p><?php echo $NumOfClosed?></p>
             </div>
         </div>
         
@@ -113,7 +113,7 @@ if($result->num_rows>0){
     <?php 
         echo'<script>
                 const Tickets = ["Open", "Pending", "Close"];
-                const NumOfTicket = ['.$NumOfOpen.', '.$NumOfPending.', '.$NumOfResolved.'];
+                const NumOfTicket = ['.$NumOfOpen.', '.$NumOfPending.', '.$NumOfClosed.'];
                 const barColors = ["#007BFF", "#FFC107", "#28A745"];
 
                 new Chart("myChart", {

@@ -38,13 +38,13 @@ if (isset($_SESSION["AccountID"])) {
     <div class="container-fluid mainContainer">
         <h1 id="PageHeading">My Ticket</h1>
         <div class="btnContainer">
-        <select name="filter" id="filter" onchange="window.location.href='Home.php?Filter=' + this.value;">
-            <option value="">Filter?</option>
+        <!-- <select name="filter" id="filter" onchange="window.location.href='Home.php?Filter=' + this.value;">
+            <option value="">Status</option>
             <option value="All" <?php if(isset($_GET["Filter"]) && $_GET["Filter"] == "All") echo "selected"?>>All</option>
             <option value="Open" <?php if(isset($_GET["Filter"]) && $_GET["Filter"] == "Open") echo "selected"?>>Open</option>
             <option value="Pending" <?php if(isset($_GET["Filter"]) && $_GET["Filter"] == "Pending") echo "selected"?>>Pending</option>
             <option value="Resolved" <?php if(isset($_GET["Filter"]) && $_GET["Filter"] == "Resolved") echo "selected"?> >Resolved</option>
-        </select>
+        </select> -->
 
             <button id="createButton" onclick="window.location.href='Create.php'">Create ticket</button>
         </div>
@@ -103,7 +103,7 @@ if (isset($_SESSION["AccountID"])) {
             if($result->num_rows>0){
                 while($row = $result->fetch_assoc()) {
                     echo '<div class="row">';
-                    echo '<div class="col-12 col-md-4 Subject" style="color:#d08211" onclick="window.location.href=\'view.php?TicketNum='.$row["TicketNum"].'\'"><span>Subject: </span>'.$row["subj"].'</div>';
+                    echo '<div class="col-12 col-md-4 Subject" onclick="window.location.href=\'view.php?TicketNum='.$row["TicketNum"].'\'"><span>Subject: </span>'.$row["subj"].'</div>';
                     echo '<div class="col-12 col-md-2"><span>Ticket ID: </span>'.$row["TicketNum"].'</div>';
                     echo '<div class="col-12 col-md-2"><span>Last Updated: </span>'.ConvertDate($row["LastUpdatedAt"]).'</div>';
                     echo '<div class="col-12 col-md-2"><span>Status: </span>'.$row["Stat"].'</div>';
@@ -114,15 +114,14 @@ if (isset($_SESSION["AccountID"])) {
                     switch($row["Stat"]){
                         case "Open":
                              echo '<div class="col-12 col-md-2 d-flex">
-                                    <button type ="submit" name ="Action" value="Edit" id="EditBtn" onclick="window.location.href=\'Edit.php?TicketNum='.$row["TicketNum"].'\'" disabled><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+                                    <button type ="submit" name ="Action" value="Edit" id="EditBtn" onclick="window.location.href=\'Edit.php?TicketNum='.$row["TicketNum"].'\'"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
                                     <button type ="submit" name ="Action" value="Edit" id="DeleteBtn" onclick="deleteTicket('.$row["TicketNum"].')"><i class="fa-solid fa-pen-to-square"></i> Delete</button>
                                     
                                   </div>';
                             break;
                             case "Pending": case "Resolved":
                              echo '<div class="col-12 col-md-2 d-flex">
-                                    <button type ="submit" name ="Action" value="Edit" id="EditBtn" onclick="window.location.href=\'Edit.php?TicketNum='.$row["TicketNum"].'\'" disabled><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-                                    <button type ="submit" name ="Action" value="Delete" id="DeleteBtn" onclick="window.location.href=\'Process.php?Delete=True&TicketNum='.$row["TicketNum"].'\'" disabled><i class="fa-solid fa-trash"></i> Delete</button>
+                
                                 </div>';
                             break;
                         

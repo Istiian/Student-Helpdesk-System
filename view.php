@@ -70,16 +70,6 @@ if (isset($_SESSION["AccountID"])) {
                 
             </div>
         </div>
-        <div class="row py-1">
-            <div class="col-6">
-                <label for=""><strong>Date Created: </strong> <span><?php echo ConvertDate($DateCreated)?></span></label>
-                
-            </div>
-
-            <div class="col-6">
-                <label for=""><strong>Last Updated: </strong> <span><?php echo ConvertDate($LastUpdatedAt)?></span></label>
-            </div>
-        </div>
 
         <div class="row py-1">
             <div class="col-6">
@@ -93,12 +83,26 @@ if (isset($_SESSION["AccountID"])) {
         </div>
 
         <div class="row py-1">
+            <div class="col-6">
+                <label for=""><strong>Date Created: </strong> <span><?php echo ConvertDate($DateCreated)?></span></label>
+                
+            </div>
+
+            <div class="col-6">
+                <label for=""><strong>Last Updated: </strong> <span><?php echo ConvertDate($LastUpdatedAt)?></span></label>
+            </div>
+        </div>
+
+        <div class="row py-1">
             
 
             <div class="col-6">
-            <button type ="submit" name ="Action" value="Edit" id="EditBtn" onclick="window.location.href='Edit.php?TicketNum=<?php echo $TicketNum?>'"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
-            <button type ="submit" name ="Action" value="Edit" id="DeleteBtn" onclick="deleteTicket(<?php echo $TicketNum ?>)"><i class="fa-solid fa-pen-to-square"></i> Delete</button>
-                
+                <?php
+                    if($Status == "Open"){
+                        echo '<button type ="submit" name ="Action" value="Edit" id="EditBtn" onclick="window.location.href='.$TicketNum.'"><i class="fa-solid fa-pen-to-square"></i> Edit</button>';
+                        echo '<button type ="submit" name ="Action" value="Edit" id="DeleteBtn" onclick="deleteTicket('.$TicketNum.')"><i class="fa-solid fa-pen-to-square"></i> Delete</button>';
+                    }
+                ?>
             </div>
         </div>
     </div>

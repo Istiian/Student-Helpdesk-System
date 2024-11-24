@@ -111,8 +111,11 @@ ul li:hover{
     margin-right: 20px;
     border-radius: 5px;
     border: 1px solid var(--text);
+    transition: 0.3s ease;
 }
-
+.dropdown:hover{
+    scale: 95%;
+}
 .btn {
     height: 100%;
     line-height: 30px;
@@ -128,9 +131,13 @@ h1 a{
     width: 95%;
     margin-inline: auto;
     text-decoration: none;
-    color: var(--accent);
+    color: var(--secondary);
     margin-top: 100px;
     margin-bottom: 25px;
+    transition: 0.3s ease;
+}
+h1 a:hover{
+    opacity: 0.7;
 }
 .InfoContainer{
     width: 90%;
@@ -217,4 +224,8 @@ h1 a{
     border-radius: 5px;
     float: right;
     margin-top: 5px;
+    transition: 0.3s ease;
+}
+form button:hover{
+    scale: 95%;
 }

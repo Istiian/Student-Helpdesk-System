@@ -6,14 +6,26 @@ if (isset($_SESSION["AccountID"])) {
     $LastName = $_SESSION["LastName"];
 
 }
+
 include "connection.php";
+function UpdateDate($TicketNum, $conn) {
+    
+    $Update = "UPDATE ticket SET LastUpdatedAt = CURRENT_TIMESTAMP WHERE TicketNum = $TicketNum";
+    if ($conn->query($Update) === TRUE) {
+        echo "Record updated successfully";
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
+
+}
+
 if(isset($_GET["Change"])){
     $ChangeStat = $_GET["Change"];
     $TicketNum = $_GET["TicketNum"];
     $UpdateStat = "UPDATE ticket SET Stat = '$ChangeStat' WHERE TicketNum = '$TicketNum'";
     if($conn->query($UpdateStat)){
+        UpdateDate($TicketNum, $conn);
         echo "success";
-        
     }else{
         echo "notsuccess";
     }
@@ -65,13 +77,26 @@ if(isset($_GET["Change"])){
 
         <div class="container-fluid mainContainer">
         <div class="btnContainer">
-            <select name="filter" id="filter" onchange="window.location.href='adminTicket.php?Filter=' + this.value;">
-                <option value="">Filter?</option>
-                <option value="All" <?php if(isset($_GET["Filter"]) && $_GET["Filter"] == "All") echo "selected" ?>>All</option>
-                <option value="Open"  <?php if(isset($_GET["Filter"]) && $_GET["Filter"] == "Open") echo "selected" ?>>Open</option>
-                <option value="Pending"  <?php if(isset($_GET["Filter"]) && $_GET["Filter"] == "Pending") echo "selected" ?>>Pending</option>
-                <option value="Resolved"  <?php if(isset($_GET["Filter"]) && $_GET["Filter"] == "Resolved") echo "selected" ?>>Resolved</option>
+            <select name="filter" id="Status" onchange="Filter()" class="Filters">
+                <option value="">Status</option>
+                <option value="All" <?php if(isset($_GET["Status"]) && $_GET["Status"] == "All") echo "selected" ?>>All</option>
+                <option value="Open"  <?php if(isset($_GET["Status"]) && $_GET["Status"] == "Open") echo "selected" ?>>Open</option>
+                <option value="Pending"  <?php if(isset($_GET["Status"]) && $_GET["Status"] == "Pending") echo "selected" ?>>Pending</option>
+                <option value="Closed"  <?php if(isset($_GET["Status"]) && $_GET["Status"] == "Closed") echo "selected" ?>>Closed</option>
             </select>
+            
+            <select name="Concern" id="Concern" onchange="Filter()" class="Filters">
+                <option value="">Concern</option>
+                <option value="All" <?php if(isset($_GET["Concern"]) && $_GET["Concern"] == "All") echo "selected" ?>>All</option>
+                <option value="Enrollment" <?php if(isset($_GET["Concern"]) && $_GET["Concern"] == "Enrollment") echo "selected" ?>>Enrollment</option>
+                <option value="Health and Wellness Concern"  <?php if(isset($_GET["Concern"]) && $_GET["Concern"] == "Health and Wellness Concern") echo "selected" ?>>Health and Wellness Concern</option>
+                <option value="CMU Student Email Address" <?php if(isset($_GET["Concern"]) && $_GET["Concern"] == "CMU Student Email Address") echo "selected" ?>>CMU Student Email Address</option>
+                <option value="Cerifications and Academic Records"  <?php if(isset($_GET["Concern"]) && $_GET["Concern"] == "Cerifications and Academic Records") echo "selected" ?>>Cerifications and Academic Records</option>
+                <option value="Library Services" <?php if(isset($_GET["Concern"]) && $_GET["Concern"] == "Library Services") echo "selected" ?>>Library Services</option>
+                <option value="Class Scheduling"  <?php if(isset($_GET["Concern"]) && $_GET["Concern"] == "Class Scheduling") echo "selected" ?>>Class Scheduling</option>
+                <option value="CMU Student Portal"  <?php if(isset($_GET["Concern"]) && $_GET["Concern"] == "CMU Student Portal") echo "selected" ?>>CMU Student Portal</option>
+            </select>
+
         </div>
                 
         <div class="ticketContainer">
@@ -82,37 +107,28 @@ if(isset($_GET["Change"])){
                 <div class="col-12 col-md-2 TicketHeading">Status</div>
                 
             </div>
-
+            
             <?php
-            if(isset($_GET["Filter"])){
-                switch($_GET["Filter"]){
-                    case "All":
-                        $SQL = "SELECT * FROM ticket";
-                        break;
-                    case "Open":
-                        $SQL = "SELECT * FROM ticket WHERE Stat = 'Open'";
-                        break;
+            $SQL = "SELECT * FROM ticket";
+            $conditions = [];
 
-                    case "Pending":
-                        $SQL = "SELECT * FROM ticket WHERE Stat = 'Pending'";
-                        break;
-
-                    case "Resolved":
-                        $SQL = "SELECT * FROM ticket WHERE Stat = 'Resolved'";
-                        break;
-                    default:
-                        $SQL = "SELECT * FROM ticket";
-                }
-            }else{
-                $SQL = "SELECT * FROM ticket";
+            if (isset($_GET["Concern"]) && $_GET["Concern"] != "" && $_GET["Concern"] != "All") {
+                $conditions[] = "Concern = '" . $_GET["Concern"] . "'";
             }
-            // include "connection.php";
-            // $SQL = "SELECT * FROM ticket WHERE AccountID = $AccountId";
+
+            if (isset($_GET["Status"]) && $_GET["Status"] != "All" && $_GET["Status"] != "" && $_GET["Status"] != "All") {
+                $conditions[] = "Stat = '" . $_GET["Status"] . "'";
+            }
+
+            if (count($conditions) > 0) {
+                $SQL .= " WHERE " . implode(" AND ", $conditions);
+            }
+            
             $result = $conn->query($SQL);
             if($result->num_rows>0){
                 while($row = $result->fetch_assoc()) {
                     echo '<div class="row">';
-                    echo '<div class="col-12 col-md-6 Subject" style="color:#d08211" onclick="window.location.href=\'Adminview.php?TicketNum='.$row["TicketNum"].'\'"><span>Subject: </span>'.$row["subj"].'</div>';
+                    echo '<div class="col-12 col-md-6 Subject" onclick="window.location.href=\'Adminview.php?TicketNum='.$row["TicketNum"].'\'"><span>Subject: </span>'.$row["subj"].'</div>';
                     echo '<div class="col-12 col-md-2"><span>Ticket ID: </span>'.$row["TicketNum"].'</div>';
                     echo '<div class="col-12 col-md-2"><span>Last Updated: </span>'.ConvertDate($row["LastUpdatedAt"]).'</div>';
                     echo '<div class="col-12 col-md-2">
@@ -120,7 +136,7 @@ if(isset($_GET["Change"])){
                             <select class="TicketStatus" name="" id="Status" onchange="window.location.href=\'adminTicket.php?Change=\' + this.value + \'&TicketNum='.$row["TicketNum"].'\'">
                                 <option value="Open" '.($row["Stat"] == "Open" ? "selected" : "").'>Open</option>
                                 <option value="Pending" '.($row["Stat"] == "Pending" ? "selected" : "").'>Pending</option>
-                                <option value="Resolved" '.($row["Stat"] == "Resolved" ? "selected" : "").'>Resolved</option>
+                                <option value="Closed" '.($row["Stat"] == "Closed" ? "selected" : "").'>Closed</option>
                             </select>
                         </div>';
 
@@ -171,6 +187,13 @@ if(isset($_GET["Change"])){
             console.log(6);
         }
 
+        function Filter(){
+            const URL = "adminTicket.php?";
+            const Concern = document.getElementById('Concern').value;
+            const Status = document.getElementById('Status').value;
+
+            window.location.href = `${URL}Concern=${Concern}&Status=${Status}`;
+        }
 
     </script>
 </body>

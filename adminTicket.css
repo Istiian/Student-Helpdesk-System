@@ -145,7 +145,7 @@ ul li:hover{
     height: 30px;
     display: flex;
     justify-content: right;
-    margin-bottom: 40px;
+    
 }
 #createButton{
     width: 150px;
@@ -156,13 +156,10 @@ ul li:hover{
     border-radius: 5px;
     border: 1px solid var(--text);
 }
-#Filter{
-    float: left;
-    height: 30px;
-    border: none;
-}
-#Status{
-    
+.Filters{
+    width: 150px;
+    text-overflow: ellipsis;
+    margin-inline: 20px;
     border: none;
 }
 .ticketContainer{
@@ -189,6 +186,8 @@ span{
 }
 .Subject{
     cursor: pointer;
+    color: var(--secondary);
+    text-overflow: ellipsis;
 }
 
 @media screen and (max-width: 767px) {

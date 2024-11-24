@@ -25,6 +25,7 @@ include "connection.php";
             $DateCreated = $row["DateCreated"];
             $Concern = $row["Concern"];
             $Email = $row["Email"];
+            $Name = $row["FullName"];
         }
 
         if(isset($_GET["Change"])){
@@ -63,7 +64,6 @@ include "connection.php";
     <div class="container-fluid sideNav">
         
         <img src="cmuheader.png" alt="" id="CMUHEADER">
-        
         <ul>
             <li class="sideButton" onclick="window.location.href='AdminDashboard.php'"><i class="fa-solid fa-chart-line"></i>Dashboard</li>
             <li class="sideButton" onclick="window.location.href='adminTicket.php'"><i class="fa-regular fa-rectangle-list"></i>Ticket list</li>
@@ -89,7 +89,7 @@ include "connection.php";
     <div class="container-fluid InfoContainer">
         <div class="row py-1">
             <div class="col-6 ">
-                <label for=""><strong>Ticket ID: </strong> <span><?php echo $TicketNum ?></span></label>
+                <label for=""><strong>Created by: </strong> <span><?php echo $Name ?></span></label>
                 
             </div>
 
@@ -98,7 +98,7 @@ include "connection.php";
                     <select name="" id="Status" style="border: none;" onchange="window.location.href='Adminview.php?TicketNum=<?php echo $TicketNum; ?>&Change=' + this.value;">
                         <option value="Open" <?php if($Status == "Open") echo "selected"?>>Open</option>
                         <option value="Pending" <?php if($Status == "Pending") echo "selected"?>>Pending</option>
-                        <option value="Resolved" <?php if($Status == "Resolved") echo "selected"?>>Resolved</option>
+                        <option value="Closed" <?php if($Status == "Closed") echo "selected"?>>Closed</option>
                     </select>
                 </span></label>
                 
@@ -106,7 +106,16 @@ include "connection.php";
         </div>
         <div class="row py-1">
             <div class="col-6">
-                <label for=""><strong>Last Updated: </strong> <span><?php echo ConvertDate($LastUpdatedAt) ?></span></label>
+                <label for=""><strong>Concern: </strong> <span><?php echo $Concern ?></span></label>
+            </div>
+            <div class="col-6">
+                <label for=""><strong>Email: </strong> <span><?php echo $Email ?></span></label>
+            </div>
+        </div>
+
+        <div class="row py-1">
+            <div class="col-6">
+                <label for=""><strong>Ticket ID: </strong> <span><?php echo $TicketNum ?></span></label>
             </div>
             <div class="col-6">
                 <label for=""><strong>Date Created: </strong> <span><?php echo ConvertDate($DateCreated) ?></span></label>
@@ -115,10 +124,10 @@ include "connection.php";
 
         <div class="row py-1">
             <div class="col-6">
-                <label for=""><strong>Concern: </strong> <span><?php echo $Concern ?></span></label>
+                <label for=""><strong>Last Updated At: </strong> <span><?php echo ConvertDate($LastUpdatedAt) ?></span></label>
             </div>
             <div class="col-6">
-                <label for=""><strong>Email: </strong> <span><?php echo $Email ?></span></label>
+                
             </div>
         </div>
     </div>

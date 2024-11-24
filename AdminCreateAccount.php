@@ -86,7 +86,7 @@ if (isset($_GET["Create"])&& $_GET["Create"]=="unsuccess") {
                     <div class="roleContainer">
                         <label for="">Role:</label>
                         <select name="Role" id="" required>
-                            <option value=""></option>
+                            <option value="">Role</option>
                             <option value="Student" <?php if(isset($_GET['Create'])&& $_GET["Create"]=="unsuccess" && $Role =="Student") echo "selected"?>>Student</option>
                             <option value="Admin" <?php if(isset($_GET['Create'])&& $_GET["Create"]=="unsuccess" && $Role ==" Admin") echo "selected"?>>Admin</option>
                         </select>
@@ -95,13 +95,13 @@ if (isset($_GET["Create"])&& $_GET["Create"]=="unsuccess") {
 
                 <div class="UserContainer">
                     <label for="">Username</label>
-                    <input type="text" name="Username" value="<?php if(isset($_GET['Create'])&& $_GET["Create"]=="unsuccess") echo $Username?>" required>
+                    <input type="text" placeholder="Username" name="Username" value="<?php if(isset($_GET['Create'])&& $_GET["Create"]=="unsuccess") echo $Username?>" required>
                     <small>Username Already Exist!</small>
                 </div>
 
                 <div class="PasswordContainer">
                     <label for="">Password:</label>
-                    <input type="text" name="Password" value="<?php if(isset($_GET['Create'])&& $_GET["Create"]=="unsuccess") echo $Pass?>" required>
+                    <input type="text" placeholder="Username" name="Password" value="<?php if(isset($_GET['Create'])&& $_GET["Create"]=="unsuccess") echo $Pass?>" required>
                 </div>
 
                 <button type="submit" id="CreateBtn" name="Action" value="CreateAcc">Create</button>

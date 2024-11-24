@@ -112,8 +112,11 @@ ul li:hover{
     margin-right: 20px;
     border-radius: 5px;
     border: 1px solid var(--text);
+    transition: 0.3s ease;
 }
-
+.dropdown:hover{
+    scale: 95%;
+}
 .btn {
     height: 100%;
     line-height: 30px;
