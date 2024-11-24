@@ -4,7 +4,8 @@ if (isset($_SESSION["AccountID"])) {
     $AccountId = $_SESSION["AccountID"];
     $FirstName = $_SESSION["FirstName"];
     $LastName = $_SESSION["LastName"];
-
+}else{
+    header("Location:login.php");
 }
 
 include "connection.php";
@@ -12,7 +13,7 @@ function UpdateDate($TicketNum, $conn) {
     
     $Update = "UPDATE ticket SET LastUpdatedAt = CURRENT_TIMESTAMP WHERE TicketNum = $TicketNum";
     if ($conn->query($Update) === TRUE) {
-        echo "Record updated successfully";
+        
     } else {
         echo "Error updating record: " . $conn->error;
     }
@@ -25,11 +26,11 @@ if(isset($_GET["Change"])){
     $UpdateStat = "UPDATE ticket SET Stat = '$ChangeStat' WHERE TicketNum = '$TicketNum'";
     if($conn->query($UpdateStat)){
         UpdateDate($TicketNum, $conn);
-        echo "success";
     }else{
         echo "notsuccess";
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -123,6 +124,8 @@ if(isset($_GET["Change"])){
             if (count($conditions) > 0) {
                 $SQL .= " WHERE " . implode(" AND ", $conditions);
             }
+            
+            $SQL .= " ORDER BY LastUpdatedAt DESC";
             
             $result = $conn->query($SQL);
             if($result->num_rows>0){

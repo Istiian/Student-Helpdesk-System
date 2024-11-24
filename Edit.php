@@ -1,4 +1,13 @@
-
+<?php 
+session_start();
+if (isset($_SESSION["AccountID"])) {
+    $AccountId = $_SESSION["AccountID"];
+    $FirstName = $_SESSION["FirstName"];
+    $LastName = $_SESSION["LastName"];
+}else{
+    header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

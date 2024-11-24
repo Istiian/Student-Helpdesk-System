@@ -1,6 +1,11 @@
 
-
 <?php
+session_start();
+if (isset($_SESSION["AccountID"])) {
+}else{
+    header("Location:login.php");
+}
+
 include "connection.php";
 $GetTicket = "SELECT * FROM ticket";
 $NumOfPending = 0;

@@ -7,7 +7,8 @@ if (isset($_SESSION["AccountID"])) {
     $LastName = $_SESSION["LastName"];
     $TicketNum = $_GET["TicketNum"];
     $Role = $_SESSION["Role"];
-    
+}else{
+    header("Location: login.php");
 }
 
 include "connection.php";

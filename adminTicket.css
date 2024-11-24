@@ -157,7 +157,7 @@ ul li:hover{
     border: 1px solid var(--text);
 }
 .Filters{
-    width: 150px;
+    width: 100px;
     text-overflow: ellipsis;
     margin-inline: 20px;
     border: none;
@@ -188,6 +188,8 @@ span{
     cursor: pointer;
     color: var(--secondary);
     text-overflow: ellipsis;
+    font-weight: bold;
+    transition: 0.3s ease;
 }
 
 @media screen and (max-width: 767px) {

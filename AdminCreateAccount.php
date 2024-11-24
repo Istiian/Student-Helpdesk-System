@@ -1,6 +1,12 @@
 <?php
+
+
 session_start();
 
+if (isset($_SESSION["AccountID"])) {
+}else{
+    header("Location:login.php");
+}
 if (isset($_GET["Create"])&& $_GET["Create"]=="unsuccess") {
     $LastName = $_SESSION["LastName"];
     $FirstName = $_SESSION["FirstName"];
