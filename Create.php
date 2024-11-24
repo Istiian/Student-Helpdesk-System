@@ -31,7 +31,7 @@ if (isset($_SESSION["AccountID"])) {
                 Forlaje
             </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li class="ShapeBtn dropdown-item" onclick="window.location.href='login.php'">Log out</li>            
+                    <li class="ShapeBtn dropdown-item" onclick="window.location.href='Process.php?Logout=True'">Log out</li>            
                 </ul>
         </div>
     </div>
